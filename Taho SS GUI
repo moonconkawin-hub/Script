@@ -1,0 +1,198 @@
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local Lighting = game:GetService("Lighting")
+local RunService = game:GetService("RunService")
+local GuiService = game:GetService("GuiService")
+
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local DISCORD_LINK = "https://discord.gg/W4hwx7VDyg"
+
+-- GUI
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "AccessUI"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.DisplayOrder = 999
+ScreenGui.Parent = playerGui
+
+-- Blur
+local Blur = Instance.new("BlurEffect")
+Blur.Size = 0
+Blur.Parent = Lighting
+
+-- Rainbow Background
+local Backdrop = Instance.new("Frame")
+Backdrop.Size = UDim2.new(1, 0, 1, 0)
+Backdrop.BackgroundTransparency = 0.15
+Backdrop.BorderSizePixel = 0
+Backdrop.ZIndex = 1
+Backdrop.Parent = ScreenGui
+
+local RainbowGradient = Instance.new("UIGradient")
+RainbowGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)),
+    ColorSequenceKeypoint.new(0.16, Color3.fromRGB(255, 127, 0)),
+    ColorSequenceKeypoint.new(0.33, Color3.fromRGB(255, 255, 0)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 0)),
+    ColorSequenceKeypoint.new(0.66, Color3.fromRGB(0, 127, 255)),
+    ColorSequenceKeypoint.new(0.83, Color3.fromRGB(75, 0, 130)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 255))
+})
+RainbowGradient.Parent = Backdrop
+
+-- Taho Label
+local TahoLabel = Instance.new("TextLabel")
+TahoLabel.Text = "Taho"
+TahoLabel.Size = UDim2.new(0, 140, 0, 40)
+TahoLabel.Position = UDim2.new(1, -150, 0, 10)
+TahoLabel.BackgroundTransparency = 1
+TahoLabel.TextColor3 = Color3.new(1,1,1)
+TahoLabel.Font = Enum.Font.GothamBlack
+TahoLabel.TextSize = 30
+TahoLabel.ZIndex = 10
+TahoLabel.Parent = ScreenGui
+
+local TahoStroke = Instance.new("UIStroke")
+TahoStroke.Thickness = 2
+TahoStroke.Parent = TahoLabel
+
+local TahoGradient = Instance.new("UIGradient")
+TahoGradient.Color = RainbowGradient.Color
+TahoGradient.Parent = TahoLabel
+
+-- Card
+local Card = Instance.new("Frame")
+Card.Size = UDim2.new(0, 360, 0, 320)
+Card.Position = UDim2.new(0.5, -180, 0.5, 30)
+Card.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Card.BackgroundTransparency = 0.15
+Card.BorderSizePixel = 0
+Card.ZIndex = 2
+Card.Parent = ScreenGui
+
+Instance.new("UICorner", Card).CornerRadius = UDim.new(0, 20)
+
+-- Rainbow Border
+local Border = Instance.new("UIStroke")
+Border.Thickness = 3
+Border.Parent = Card
+
+local BorderGradient = Instance.new("UIGradient")
+BorderGradient.Color = RainbowGradient.Color
+BorderGradient.Parent = Border
+
+-- Title
+local Title = Instance.new("TextLabel")
+Title.Text = "Discord Required!"
+Title.Size = UDim2.new(1, 0, 0, 32)
+Title.Position = UDim2.new(0, 0, 0, 52)
+Title.BackgroundTransparency = 1
+Title.TextColor3 = Color3.new(1,1,1)
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 22
+Title.ZIndex = 5
+Title.Parent = Card
+
+-- Subtitle
+local Sub = Instance.new("TextLabel")
+Sub.Text = "Join our Discord to unlock full access!"
+Sub.Size = UDim2.new(1, -30, 0, 40)
+Sub.Position = UDim2.new(0, 15, 0, 84)
+Sub.BackgroundTransparency = 1
+Sub.TextColor3 = Color3.fromRGB(240,240,240)
+Sub.Font = Enum.Font.Gotham
+Sub.TextSize = 13
+Sub.TextWrapped = true
+Sub.ZIndex = 5
+Sub.Parent = Card
+
+-- Steps
+local steps = {
+    {icon = "①", text = "Click button below"},
+    {icon = "②", text = "Website opens automatically"},
+    {icon = "③", text = "Join Discord"},
+    {icon = "④", text = "Taho SS Coming Soon"},
+}
+
+for i, s in ipairs(steps) do
+    local Txt = Instance.new("TextLabel")
+    Txt.Text = s.icon .. " " .. s.text
+    Txt.Size = UDim2.new(1, -30, 0, 22)
+    Txt.Position = UDim2.new(0, 15, 0, 160 + (i-1)*24)
+    Txt.BackgroundTransparency = 1
+    Txt.TextColor3 = Color3.new(1,1,1)
+    Txt.Font = Enum.Font.Gotham
+    Txt.TextSize = 13
+    Txt.TextXAlignment = Enum.TextXAlignment.Left
+    Txt.ZIndex = 5
+    Txt.Parent = Card
+end
+
+-- Rainbow Button
+local Btn = Instance.new("TextButton")
+Btn.Text = "🔗 Join Discord"
+Btn.Size = UDim2.new(0.82, 0, 0, 46)
+Btn.Position = UDim2.new(0.09, 0, 0, 262)
+Btn.BackgroundColor3 = Color3.new(1,1,1)
+Btn.TextColor3 = Color3.new(1,1,1)
+Btn.Font = Enum.Font.GothamBold
+Btn.TextSize = 15
+Btn.ZIndex = 5
+Btn.Parent = Card
+
+Instance.new("UICorner", Btn).CornerRadius = UDim.new(0, 12)
+
+local BtnGradient = Instance.new("UIGradient")
+BtnGradient.Color = RainbowGradient.Color
+BtnGradient.Parent = Btn
+
+local BtnStroke = Instance.new("UIStroke")
+BtnStroke.Thickness = 3
+BtnStroke.Parent = Btn
+
+local BtnStrokeGradient = Instance.new("UIGradient")
+BtnStrokeGradient.Color = RainbowGradient.Color
+BtnStrokeGradient.Parent = BtnStroke
+
+-- Button Open Website
+Btn.MouseButton1Click:Connect(function()
+    Btn.Text = "Opening..."
+
+    local success = pcall(function()
+        GuiService:OpenBrowserWindow(DISCORD_LINK)
+    end)
+
+    if success then
+        Btn.Text = "✓ Opened!"
+    else
+        if setclipboard then
+            setclipboard(DISCORD_LINK)
+            Btn.Text = "✓ Link Copied!"
+        else
+            Btn.Text = "Open manually"
+        end
+    end
+
+    task.wait(2)
+    Btn.Text = "🔗 Join Discord"
+end)
+
+-- Rainbow Animation
+RunService.RenderStepped:Connect(function()
+    RainbowGradient.Rotation += 0.5
+    BorderGradient.Rotation += 1
+    BtnGradient.Rotation += 1
+    BtnStrokeGradient.Rotation += 1
+    TahoGradient.Rotation += 1
+end)
+
+-- Open Animation
+TweenService:Create(Blur, TweenInfo.new(0.5), {
+    Size = 16
+}):Play()
+
+TweenService:Create(Card, TweenInfo.new(0.6, Enum.EasingStyle.Back), {
+    Position = UDim2.new(0.5, -180, 0.5, -160)
+}):Play()
