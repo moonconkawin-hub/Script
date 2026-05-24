@@ -1,0 +1,112 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+--========================
+-- CONFIG (KEY SERVER)
+--========================
+local KEY_URL = "https://raw.githubusercontent.com/YOURNAME/YOURREPO/main/keys.txt"
+
+local Unlocked = false
+
+--========================
+-- FUNCTIONS
+--========================
+local function normalize(str)
+    return string.upper(string.gsub(str, "%s+", ""))
+end
+
+-- เช็ค key จาก server
+local function CheckKeyServer(inputKey)
+    inputKey = normalize(inputKey)
+
+    local success, data = pcall(function()
+        return game:HttpGet(KEY_URL)
+    end)
+
+    if not success then
+        return false, "Server Error"
+    end
+
+    for line in string.gmatch(data, "[^\r\n]+") do
+        if normalize(line) == inputKey then
+            return true
+        end
+    end
+
+    return false
+end
+
+-- ลบ key ออกจาก server (ต้องแก้ไฟล์เอง / หรือใช้ backend จริงจะดีกว่า)
+local function FakeRemoveKey()
+    -- GitHub raw ทำลบไม่ได้ ต้องใช้ backend จริงถ้าจะลบจริง 100%
+end
+
+--========================
+-- UI
+--========================
+local Window = Rayfield:CreateWindow({
+    Name = "🌈 Taho Hub | Secure",
+    LoadingTitle = "Taho Hub",
+    LoadingSubtitle = "Key System Loading",
+    ConfigurationSaving = { Enabled = false }
+})
+
+local KeyTab = Window:CreateTab("Key 🔑")
+local MainTab = Window:CreateTab("Main 🏠")
+local DiscordTab = Window:CreateTab("Discord 💬")
+
+local Status = MainTab:CreateParagraph({
+    Title = "🔒 Locked",
+    Content = "กรุณาใส่ Key เพื่อเข้าใช้งาน"
+})
+
+--========================
+-- KEY INPUT
+--========================
+KeyTab:CreateInput({
+    Name = "Enter Key",
+    PlaceholderText = "ใส่ Key",
+
+    Callback = function(Text)
+
+        if Unlocked then return end
+
+        local ok, msg = CheckKeyServer(Text)
+
+        if ok then
+            Unlocked = true
+
+            Rayfield:Notify({
+                Title = "Success",
+                Content = "Key ถูกต้อง (Verified)",
+                Duration = 3
+            })
+
+            Status:Set({
+                Title = "🌈 Unlocked!",
+                Content = "Welcome to Taho Hub"
+            })
+
+            Window:SwitchTab(MainTab)
+
+            -- ⚠️ จริง ๆ ต้องลบ key ผ่าน backend
+            FakeRemoveKey()
+
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = msg or "Key ไม่ถูกต้อง",
+                Duration = 3
+            })
+        end
+    end
+})
+
+--========================
+-- DISCORD BUTTON
+--========================
+DiscordTab:CreateButton({
+    Name = "Copy Discord",
+    Callback = function()
+        setclipboard("https://discord.gg/W4hwx7VDyg")
+    end
+})
