@@ -2,38 +2,38 @@
 -- LOAD RAYFIELD (SAFE)
 --========================
 local success, Rayfield = pcall(function()
-    return loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+    return loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 end)
 
 if not success or not Rayfield then
-    warn("Rayfield failed to load")
-    return
+    warn("Rayfield failed to load")
+    return
 end
 
 --========================
 -- OPTIONAL KEY SYSTEM
 --========================
 local Keys = {
-    ["TAHO-123"] = true,
-    ["TEST"] = true
+    ["TAHO-123"] = true,
+    ["TEST"] = true
 }
 
 local function normalize(str)
-    return string.upper((str or ""):gsub("%s+",""))
+    return string.upper((str or ""):gsub("%s+",""))
 end
 
 local function CheckKey(k)
-    return Keys[normalize(k)] == true
+    return Keys[normalize(k)] == true
 end
 
 --========================
 -- WINDOW (NO HUB)
 --========================
 local Window = Rayfield:CreateWindow({
-    Name = "🌈 Taho ✦ Premium",
-    LoadingTitle = "Loading...",
-    LoadingSubtitle = "Keyless Access",
-    ConfigurationSaving = { Enabled = false }
+    Name = "Taho Hub",
+    LoadingTitle = "Loading...",
+    LoadingSubtitle = "Keyless Access",
+    ConfigurationSaving = { Enabled = false }
 })
 
 local KeyTab = Window:CreateTab("Key 🔑")
@@ -43,177 +43,97 @@ local Unlocked = false
 -- SAFE RUN FUNCTION
 --========================
 local function runScript(url)
-    local ok, err = pcall(function()
-        loadstring(game:HttpGet(url, true))()
-    end)
+    local ok, err = pcall(function()
+        loadstring(game:HttpGet(url, true))()
+    end)
 
-    if not ok then
-        Rayfield:Notify({
-            Title = "Error",
-            Content = "Failed to load script",
-            Duration = 3
-        })
-        warn(err)
-    end
+    if not ok then
+        Rayfield:Notify({
+            Title = "Error",
+            Content = "Failed to load script",
+            Duration = 3
+        })
+        warn(err)
+    end
 end
 
 --========================
 -- KEY INPUT (OPTIONAL / KEYLESS)
 --========================
 KeyTab:CreateInput({
-    Name = "Enter Key (Optional)",
-    PlaceholderText = "Skip or enter key",
+    Name = "Enter Key (Optional)",
+    PlaceholderText = "key",
 
-    Callback = function(Text)
+    Callback = function(Text)
 
-        if Unlocked then return end
+        if Unlocked then return end
 
-        if Text == "" then
-            Unlocked = true
-        elseif CheckKey(Text) then
-            Unlocked = true
-        else
-            Rayfield:Notify({
-                Title = "Error",
-                Content = "Invalid Key",
-                Duration = 3
-            })
---========================
--- LOAD RAYFIELD (SAFE)
---========================
-local success, Rayfield = pcall(function()
-    return loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
-end)
+        if Text == "" then
+            Unlocked = true
+        elseif CheckKey(Text) then
+            Unlocked = true
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "Invalid Key",
+                Duration = 3
+            })
+            return
+        end
 
-if not success or not Rayfield then
-    warn("Rayfield failed to load")
-    return
-end
+        Rayfield:Notify({
+            Title = "Success",
+            Content = "Access Granted",
+            Duration = 3
+        })
 
---========================
--- OPTIONAL KEY SYSTEM
---========================
-local Keys = {
-    ["TAHO-123"] = true,
-    ["TEST"] = true
-}
+        -- MAIN TAB
+        local MainTab = Window:CreateTab("Main 🏠")
 
-local function normalize(str)
-    return string.upper((str or ""):gsub("%s+",""))
-end
+        MainTab:CreateParagraph({
+            Title = "Unlocked",
+            Content = "Ready to use"
+        })
 
-local function CheckKey(k)
-    return Keys[normalize(k)] == true
-end
+        -- BUTTON 1
+        MainTab:CreateButton({
+            Name = "Combat Warriors",
+            Callback = function()
+                runScript("https://lumin-hub.lol/cw.lua")
+            end
+        })
 
---========================
--- WINDOW (NO HUB)
---========================
-local Window = Rayfield:CreateWindow({
-    Name = "Taho Hub",
-    LoadingTitle = "Loading...",
-    LoadingSubtitle = "Keyless Access",
-    ConfigurationSaving = { Enabled = false }
-})
+        -- BUTTON 2
+        MainTab:CreateButton({
+            Name = "Taho GUI",
+            Callback = function()
+                runScript("https://raw.githubusercontent.com/moonconkawin-hub/Script/refs/heads/main/Taho%20SS%20GUI")
+            end
+        })
 
-local KeyTab = Window:CreateTab("Key 🔑")
-local Unlocked = false
+        -- BUTTON 3
+        MainTab:CreateButton({
+            Name = "Zombie Area",
+            Callback = function()
+                runScript("https://raw.githubusercontent.com/caomod2077/Script/main/Foxname_SZA.lua")
+            end
+        })
 
---========================
--- SAFE RUN FUNCTION
---========================
-local function runScript(url)
-    local ok, err = pcall(function()
-        loadstring(game:HttpGet(url, true))()
-    end)
+        -- DISCORD TAB
+        local DiscordTab = Window:CreateTab("Discord 💬")
 
-    if not ok then
-        Rayfield:Notify({
-            Title = "Error",
-            Content = "Failed to load script",
-            Duration = 3
-        })
-        warn(err)
-    end
-end
+        DiscordTab:CreateButton({
+            Name = "Copy Discord",
+            Callback = function()
+                setclipboard("https://discord.gg/XBcEU5CPGp")
 
---========================
--- KEY INPUT (OPTIONAL / KEYLESS)
---========================
-KeyTab:CreateInput({
-    Name = "Enter Key (Optional)",
-    PlaceholderText = "key",
+                Rayfield:Notify({
+                    Title = "Discord",
+                    Content = "Copied!",
+                    Duration = 3
+                })
+            end
+        })
 
-    Callback = function(Text)
-
-        if Unlocked then return end
-
-        if Text == "" then
-            Unlocked = true
-        elseif CheckKey(Text) then
-            Unlocked = true
-        else
-            Rayfield:Notify({
-                Title = "Error",
-                Content = "Invalid Key",
-                Duration = 3
-            })
-            return
-        end
-
-        Rayfield:Notify({
-            Title = "Success",
-            Content = "Access Granted",
-            Duration = 3
-        })
-
-        -- MAIN TAB
-        local MainTab = Window:CreateTab("Main 🏠")
-
-        MainTab:CreateParagraph({
-            Title = "Unlocked",
-            Content = "Ready to use"
-        })
-
-        -- BUTTON 1
-        MainTab:CreateButton({
-            Name = "Combat Warriors",
-            Callback = function()
-                runScript("https://lumin-hub.lol/cw.lua")
-            end
-        })
-
-        -- BUTTON 2
-        MainTab:CreateButton({
-            Name = "Taho GUI",
-            Callback = function()
-                runScript("https://raw.githubusercontent.com/moonconkawin-hub/Script/refs/heads/main/Taho%20SS%20GUI")
-            end
-        })
-
-        -- BUTTON 3
-        MainTab:CreateButton({
-            Name = "Zombie Area",
-            Callback = function()
-                runScript("https://raw.githubusercontent.com/caomod2077/Script/main/Foxname_SZA.lua")
-            end
-        })
-
-        -- DISCORD TAB
-        local DiscordTab = Window:CreateTab("Discord 💬")
-
-        DiscordTab:CreateButton({
-            Name = "Copy Discord",
-            Callback = function()
-                setclipboard("https://discord.gg/XBcEU5CPGp")
-
-                Rayfield:Notify({
-                    Title = "Discord",
-                    Content = "Copied!",
-                    Duration = 3
-                })
-            end
-        })
-
-    end
+    end
 })
