@@ -1,7 +1,7 @@
 -- Anti Tamper
-local SCRIPT_NAME = "TAHO HUB"
+local SCRIPT_NAME = "TAHO-TEST"
 
-if SCRIPT_NAME ~= "TAHO HUB" then
+if SCRIPT_NAME ~= "TAHO-TEST" then
     warn("Tamper Detected")
     return
 end
