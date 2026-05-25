@@ -78,6 +78,86 @@ KeyTab:CreateInput({
                 Content = "Invalid Key",
                 Duration = 3
             })
+--========================
+-- LOAD RAYFIELD (SAFE)
+--========================
+local success, Rayfield = pcall(function()
+    return loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+end)
+
+if not success or not Rayfield then
+    warn("Rayfield failed to load")
+    return
+end
+
+--========================
+-- OPTIONAL KEY SYSTEM
+--========================
+local Keys = {
+    ["TAHO-123"] = true,
+    ["TEST"] = true
+}
+
+local function normalize(str)
+    return string.upper((str or ""):gsub("%s+",""))
+end
+
+local function CheckKey(k)
+    return Keys[normalize(k)] == true
+end
+
+--========================
+-- WINDOW (NO HUB)
+--========================
+local Window = Rayfield:CreateWindow({
+    Name = "Taho Hub",
+    LoadingTitle = "Loading...",
+    LoadingSubtitle = "Keyless Access",
+    ConfigurationSaving = { Enabled = false }
+})
+
+local KeyTab = Window:CreateTab("Key 🔑")
+local Unlocked = false
+
+--========================
+-- SAFE RUN FUNCTION
+--========================
+local function runScript(url)
+    local ok, err = pcall(function()
+        loadstring(game:HttpGet(url, true))()
+    end)
+
+    if not ok then
+        Rayfield:Notify({
+            Title = "Error",
+            Content = "Failed to load script",
+            Duration = 3
+        })
+        warn(err)
+    end
+end
+
+--========================
+-- KEY INPUT (OPTIONAL / KEYLESS)
+--========================
+KeyTab:CreateInput({
+    Name = "Enter Key (Optional)",
+    PlaceholderText = "key",
+
+    Callback = function(Text)
+
+        if Unlocked then return end
+
+        if Text == "" then
+            Unlocked = true
+        elseif CheckKey(Text) then
+            Unlocked = true
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "Invalid Key",
+                Duration = 3
+            })
             return
         end
 
