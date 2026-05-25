@@ -1,4 +1,27 @@
 --========================
+-- ANTI TAMPER / DEBUG
+--========================
+local SCRIPT_NAME = "TAHO-Test"
+
+if SCRIPT_NAME ~= "TAHO-Test" then
+    warn("Tamper Detected")
+    return
+end
+
+local start = tick()
+task.wait(0.1)
+
+if tick() - start > 2 then
+    warn("Debugger detected")
+    return
+end
+
+if typeof(loadstring) ~= "function" then
+    warn("Executor Error")
+    return
+end
+
+--========================
 -- LOAD RAYFIELD (SAFE)
 --========================
 local success, Rayfield = pcall(function()
@@ -35,6 +58,65 @@ local Window = Rayfield:CreateWindow({
     LoadingSubtitle = "Keyless Access",
     ConfigurationSaving = { Enabled = false }
 })
+
+local KeyTab = Window:CreateTab("Key")
+local Unlocked = false
+
+--========================
+-- SAFE RUN FUNCTION
+--========================
+local function runScript(url)
+    local ok, err = pcall(function()
+        loadstring(game:HttpGet(url, true))()
+    end)
+
+    if not ok then
+        Rayfield:Notify({
+            Title = "Error",
+            Content = "Failed to load script",
+            Duration = 3
+        })
+        warn(err)
+    end
+end
+
+--========================
+-- KEY INPUT
+--========================
+KeyTab:CreateInput({
+    Name = "Enter Key (Optional)",
+    PlaceholderText = "key",
+
+    Callback = function(Text)
+        if Unlocked then return end
+
+        local input = normalize(Text)
+
+        if input == "" or CheckKey(input) then
+            Unlocked = true
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "Invalid Key",
+                Duration = 3
+            })
+            return
+        end
+
+        Rayfield:Notify({
+            Title = "Success",
+            Content = "Access Granted",
+            Duration = 3
+        })
+
+        local MainTab = Window:CreateTab("Main")
+
+        MainTab:CreateParagraph({
+            Title = "Unlocked",
+            Content = "Ready to use"
+        })
+    end
+})})
 
 local KeyTab = Window:CreateTab("Key")
 local Unlocked = false
