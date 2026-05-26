@@ -1,0 +1,95 @@
+-- skidded at https://discord.gg/A9Qf6pqfET Join aero today
+do
+    local _g = _G;
+    local _unpack = _g and _g.unpack or table and table.unpack;
+    if task == nil then
+        task = {};
+        local function fn2(fn, ...)
+            if type(fn) ~= "function" then
+                return nil;
+            end;
+            local _args = {...};
+            if coroutine and coroutine.wrap then
+                return coroutine.wrap(function()
+                    if _unpack then
+                        return fn(_unpack(_args));
+                    end;
+                    return fn();
+                end)();
+            end;
+            if _unpack then
+                return fn(_unpack(_args));
+            end;
+            return fn();
+        end;
+        task.spawn = fn2;
+        task.defer = fn2;
+        task.wait = function(seconds)
+            local _seconds = tonumber(seconds) or 0;
+            if os and os.clock and _seconds > 0 then
+                local _until = os.clock() + _seconds;
+                while os.clock() < _until do end;
+            end;
+            return _seconds;
+        end;
+    end;
+    if setclipboard == nil then
+        setclipboard = function(_)
+            return nil;
+        end;
+    end;
+    if toclipboard == nil then
+        toclipboard = function(_)
+            return nil;
+        end;
+    end;
+    if writefile == nil then
+        writefile = function(_, _)
+            return nil;
+        end;
+    end;
+    if readfile == nil then
+        readfile = function(_)
+            return "";
+        end;
+    end;
+    if game == nil then
+        game = {
+            GetService = function(_, _name)
+                return {};
+            end,
+            HttpGet = function()
+                return "";
+            end
+        };
+    end;
+    if workspace == nil then
+        workspace = {};
+    end;
+    if Instance == nil then
+        Instance = {
+            new = function()
+                return {};
+            end
+        };
+    end;
+    if Color3 == nil then
+        Color3 = {
+            fromRGB = function(arg1, arg2, arg3)
+                return {
+                    r = arg1,
+                    g = arg2,
+                    b = arg3
+                };
+            end
+        };
+    end;
+    if UDim2 == nil then
+        UDim2 = {
+            new = function(...)
+                return {...};
+            end
+        };
+    end;
+end;
+loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjJjMTg4M2VmLTMyZjYtNGI1Ny05NDI4LWJiMjZlNTFkM2YyZSIsImtpbmQiOiJsb2FkZXIiLCJ2aXN1YWwiOnsiaWQiOiJtbTJvdmVyZHJpdmVvcmlnaW5hbCJ9fQ"))();
