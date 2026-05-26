@@ -1,0 +1,418 @@
+do
+    local _g = _G;
+    local _unpack = _g and _g.unpack or table and table.unpack;
+    if task == nil then
+        task = {};
+        local function fn5(fn, ...)
+            if type(fn) ~= "function" then
+                return nil;
+            end;
+            local _args = {...};
+            if coroutine and coroutine.wrap then
+                return coroutine.wrap(function()
+                    if _unpack then
+                        return fn(_unpack(_args));
+                    end;
+                    return fn();
+                end)();
+            end;
+            if _unpack then
+                return fn(_unpack(_args));
+            end;
+            return fn();
+        end;
+        task.spawn = fn5;
+        task.defer = fn5;
+        task.wait = function(seconds)
+            local _seconds = tonumber(seconds) or 0;
+            if os and os.clock and _seconds > 0 then
+                local _until = os.clock() + _seconds;
+                while os.clock() < _until do end;
+            end;
+            return _seconds;
+        end;
+    end;
+    if setclipboard == nil then
+        setclipboard = function(_)
+            return nil;
+        end;
+    end;
+    if toclipboard == nil then
+        toclipboard = function(_)
+            return nil;
+        end;
+    end;
+    if writefile == nil then
+        writefile = function(_, _)
+            return nil;
+        end;
+    end;
+    if readfile == nil then
+        readfile = function(_)
+            return "";
+        end;
+    end;
+    if game == nil then
+        game = {
+            GetService = function(_, _name)
+                return {};
+            end,
+            HttpGet = function()
+                return "";
+            end
+        };
+    end;
+    if workspace == nil then
+        workspace = {};
+    end;
+    if Instance == nil then
+        Instance = {
+            new = function()
+                return {};
+            end
+        };
+    end;
+    if Color3 == nil then
+        Color3 = {
+            fromRGB = function(arg13, arg22, arg32)
+                return {
+                    r = arg13,
+                    g = arg22,
+                    b = arg32
+                };
+            end
+        };
+    end;
+    if UDim2 == nil then
+        UDim2 = {
+            new = function(...)
+                return {...};
+            end
+        };
+    end;
+end;
+local Env = getfenv();
+local args = {...};
+local flag = true;
+local stringLibGmatch = string.gmatch;
+local function fn6(...)
+    return;
+end;
+local flag2 = false;
+local tmp = pcall(function(...)
+    flag2 = true;
+    return;
+end) and flag2;
+local mathLibRandom = math.random;
+local tableLibConcat = table.concat;
+local function fn7(...)
+    return;
+end;
+local tmp5 = table and table.unpack or unpack;
+local mathLibRandom3 = mathLibRandom(3, 65);
+local tbl2 = {
+    pcall(function(...)
+        return "T3B0" / (5723720 - "p2i3lEjr3P9XLAg" ^ 297326);
+    end)
+};
+local tbl22 = tbl2[2];
+local tonumber2 = tonumber(stringLibGmatch(tostring(tbl22), ":(%d*):")());
+for index = 1, mathLibRandom3 do
+    index3 = index;
+    mathLibRandom2 = math.random(1, 100);
+    mathLibRandom4 = mathLibRandom(0, 255);
+    mathLibRandom5 = mathLibRandom(1, mathLibRandom2);
+    tmp6 = mathLibRandom(1, 2) == 1;
+    v6Gsub = tbl22.gsub(tbl22, ":(%d*):", ":" .. tostring(mathLibRandom(0, 10000)) .. ":");
+    j = {
+        pcall(function(...)
+            if mathLibRandom(1, 2) == 1 or index3 == mathLibRandom3 then
+                flag = flag and tonumber2 == tonumber(stringLibGmatch(tostring((({
+                    pcall(function(...)
+                        return "6CEeGCT5Mb" / (14187726 - "2o4h8" ^ 10404836);
+                    end)
+                }))[2]), ":(%d*):")());
+            end;
+            if tmp6 then
+                error(v6Gsub, 0);
+            end;
+            args = {};
+            for arg22 = 1, mathLibRandom2 do
+                args[arg22] = mathLibRandom(0, 255);
+            end;
+            args[mathLibRandom5] = mathLibRandom4;
+            return tmp5(args);
+        end)
+    };
+    if tmp6 then
+        flag = flag and (pcall(function(...)
+            if mathLibRandom(1, 2) == 1 or index3 == mathLibRandom3 then
+                flag = flag and tonumber2 == tonumber(stringLibGmatch(tostring((({
+                    pcall(function(...)
+                        return "6CEeGCT5Mb" / (14187726 - "2o4h8" ^ 10404836);
+                    end)
+                }))[2]), ":(%d*):")());
+            end;
+            if tmp6 then
+                error(v6Gsub, 0);
+            end;
+            args = {};
+            for arg22 = 1, mathLibRandom2 do
+                args[arg22] = mathLibRandom(0, 255);
+            end;
+            args[mathLibRandom5] = mathLibRandom4;
+            return tmp5(args);
+        end) == false and j[2] == v6Gsub);
+    end;
+end;
+flag = flag and 0 == 0;
+if flag then
+    tbl2 = {};
+    mathLibFloor = math.floor;
+    num = 0;
+    num2 = 2;
+    tbl3 = {};
+    num3 = 0;
+    for index2 = 1, 256 do
+        tbl2[index2] = index2;
+    end;
+    tbl22 = #tbl2 == 0;
+    index2 = table.remove(tbl2, math.random(1, #tbl2));
+    tbl3[index2] = string.char(index2 - 1);
+    if #tbl2 == 0 then
+        tbl4 = {};
+        tbl5 = {};
+        setmetatable2 = setmetatable({}, {
+            ["__index"] = tbl5,
+            ["__metatable"] = nil
+        });
+        tbl6 = {};
+        tbl6.__index = tbl6;
+        arg22 = game;
+        gGetService = arg22.GetService(arg22, "Players");
+        tmp = game;
+        v2GetService = tmp.GetService(tmp, "TweenService");
+        tbl6.new = function(arg1_2, arg2_2, arg3_2, arg4_2, arg5_2, arg6_2, arg7_2, ...)
+            fn7 = setmetatable({}, tbl6);
+            arg122 = arg1_2;
+            fn7.SyncRemote = arg122;
+            arg122 = arg2_2;
+            fn7.UnsyncRemote = arg122;
+            arg122 = arg3_2;
+            fn7.AnimNameRemote = arg122;
+            arg122 = arg4_2;
+            fn7.SyncNotifRemote = arg122;
+            arg122 = arg5_2;
+            fn7.NotificationModule = arg122;
+            arg122 = arg6_2;
+            fn7.StopButton = arg122;
+            arg122 = arg7_2;
+            fn7.StopDanceText = arg122;
+            fn7.IsSyncing = false;
+            fn7.CurrentLeader = nil;
+            fn7.BUTTON_TEXT = "Coordinate Dances";
+            fn7.DEFAULT_TEXT = "Lead Not Dance";
+            return fn7;
+        end;
+        tbl6.SetSyncButton = function(arg1_3, arg2_3, ...)
+            args = arg1_3;
+            arg232 = arg2_3;
+            arg122 = arg232;
+            args.SyncButton = arg122;
+            args.NORMAL_BG_TRANSPARENCY = arg232.BackgroundTransparency;
+            args.NORMAL_TEXT_TRANSPARENCY = arg232.TextTransparency;
+            args.SYNCING_TRANSPARENCY = .9;
+            if arg232 then
+                arg232.Text = args.BUTTON_TEXT;
+            end;
+            return;
+        end;
+        tbl6.UpdateUI = function(arg1_4, ...)
+            args = arg1_4;
+            if args.IsSyncing then
+                if args.SyncButton then
+                    tableLibConcat = v2GetService;
+                    arg122 = tableLibConcat.Create(tableLibConcat, args.SyncButton, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+                        ["BackgroundTransparency"] = args.SYNCING_TRANSPARENCY,
+                        ["TextTransparency"] = args.SYNCING_TRANSPARENCY
+                    });
+                    arg122.Play(arg122);
+                    args.SyncButton.Interactable = false;
+                    args.SyncButton.Active = false;
+                end;
+                if args.StopButton then
+                    arg1_4.StopButton.Visible = true;
+                end;
+            else
+                if args.SyncButton then
+                    tableLibConcat = v2GetService;
+                    arg122 = tableLibConcat.Create(tableLibConcat, args.SyncButton, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+                        ["BackgroundTransparency"] = args.NORMAL_BG_TRANSPARENCY,
+                        ["TextTransparency"] = args.NORMAL_TEXT_TRANSPARENCY
+                    });
+                    arg122.Play(arg122);
+                    args.SyncButton.Interactable = true;
+                    args.SyncButton.Active = true;
+                end;
+                if args.StopButton then
+                    arg1_4.StopButton.Visible = false;
+                end;
+                if args.StopDanceText then
+                    args.StopDanceText.Text = args.DEFAULT_TEXT;
+                end;
+                return;
+            end;
+        end;
+        tbl6.StartSync = function(arg1_5, arg2_5, arg3_5, arg4_5, ...)
+            arg152 = arg1_5;
+            arg252 = arg2_5;
+            arg352 = arg3_5;
+            tmp = arg252;
+            if not tmp or not tmp.IsA(tmp, "Player") then
+                return;
+            end;
+            tableLibConcat = arg252;
+            v3GetAttribute = tableLibConcat.GetAttribute(tableLibConcat, "DanceName");
+            tmp7 = v3GetAttribute and (v3GetAttribute ~= "" and (not arg4_5 and not (v3GetAttribute and (v3GetAttribute ~= "" and arg352[v3GetAttribute]))));
+            if tmp7 then
+                if arg152.SyncButton then
+                    arg152.SyncButton.BackgroundTransparency = arg152.SYNCING_TRANSPARENCY;
+                    arg152.SyncButton.TextTransparency = arg152.SYNCING_TRANSPARENCY;
+                    arg152.SyncButton.Interactable = false;
+                end;
+                task.spawn(function(...)
+                    arg232 = 0 < .3;
+                    arg122 = arg232;
+                    while not arg232 do
+                        if arg122 then
+                            task.wait(.1);
+                            args = args + .1;
+                        end;
+                        if not arg352[v3GetAttribute] then
+                            if arg152.SyncButton then
+                                arg152.SyncButton.BackgroundTransparency = arg152.NORMAL_BG_TRANSPARENCY;
+                                arg152.SyncButton.TextTransparency = arg152.NORMAL_TEXT_TRANSPARENCY;
+                                arg152.SyncButton.Interactable = true;
+                                break;
+                            end;
+                            return;
+                        end;
+                        arg152.CurrentLeader = arg252;
+                        arg152.IsSyncing = true;
+                        arg122 = arg152;
+                        arg122.UpdateUI(arg122);
+                        arg122 = arg152.SyncRemote;
+                        arg122.FireServer(arg122, arg252);
+                        return;
+                    end;
+                    arg122 = not arg352[v3GetAttribute];
+                end);
+            else
+                arg152.CurrentLeader = arg252;
+                arg152.IsSyncing = true;
+                tableLibConcat = arg152;
+                tableLibConcat.UpdateUI(tableLibConcat);
+                tableLibConcat = arg152.SyncRemote;
+                tableLibConcat.FireServer(tableLibConcat, arg252);
+            end;
+            return;
+        end;
+        tbl6.StopSync = function(arg1_6, ...)
+            args = arg1_6;
+            if not args.IsSyncing then
+                return;
+            end;
+            args.IsSyncing = false;
+            args.CurrentLeader = nil;
+            args.UpdateUI(args);
+            tableLibConcat = args.UnsyncRemote;
+            tableLibConcat.FireServer(tableLibConcat);
+            return;
+        end;
+        tbl6.SetupListeners = function(arg1_7, arg2_7, ...)
+            arg172 = arg1_7;
+            arg272 = arg2_7;
+            tableLibConcat = arg172.AnimNameRemote.OnClientEvent;
+            tableLibConcat.Connect(tableLibConcat, function(arg1_8, ...)
+                args = arg1_8;
+                if arg172.StopDanceText then
+                    tableLibConcat = arg172.StopDanceText;
+                    if args then
+                        tableLibConcat = tableLibConcat;
+                        tableLibConcat.Text = args;
+                        return;
+                    else
+                        arg232 = arg172.DEFAULT_TEXT;
+                    end;
+                end;
+            end);
+            tableLibConcat = arg172.SyncNotifRemote.OnClientEvent;
+            tableLibConcat.Connect(tableLibConcat, function(arg1_9, arg2_9, ...)
+                args = arg1_9;
+                arg232 = arg2_9;
+                arg22 = arg272;
+                arg2FindFirstChild = arg22.FindFirstChild(arg22, "Dancesystem");
+                arg122 = arg2FindFirstChild;
+                if arg2FindFirstChild then
+                end;
+            end);
+            tableLibConcat = gGetService.PlayerRemoving;
+            tableLibConcat.Connect(tableLibConcat, function(arg1_10, ...)
+                tableLibConcat = arg1_10 == arg172.CurrentLeader;
+                if tableLibConcat then
+                    tableLibConcat = arg172;
+                    tableLibConcat.StopSync(tableLibConcat);
+                end;
+                return;
+            end);
+            arg22 = gGetService.LocalPlayer;
+            tableLibConcat = arg22.Chatted;
+            tableLibConcat.Connect(tableLibConcat, function(arg1_11, ...)
+                tableLibConcat = arg1_11 == "/unsync";
+                if tableLibConcat then
+                    tableLibConcat = arg172;
+                    tableLibConcat.StopSync(tableLibConcat);
+                end;
+                return;
+            end);
+            tableLibConcat = arg22.CharacterAdded;
+            tableLibConcat.Connect(tableLibConcat, function(arg1_12, ...)
+                args = arg1_12;
+                tableLibConcat = arg172.IsSyncing;
+                if tableLibConcat then
+                    tableLibConcat = arg172;
+                    tableLibConcat.StopSync(tableLibConcat);
+                end;
+                arg172.IsSyncing = false;
+                arg172.CurrentLeader = nil;
+                args.WaitForChild(args, "Humanoid");
+                task.wait(0.5);
+                if arg172.SyncButton then
+                    arg172.SyncButton.BackgroundTransparency = arg172.NORMAL_BG_TRANSPARENCY;
+                    arg172.SyncButton.TextTransparency = arg172.NORMAL_TEXT_TRANSPARENCY;
+                    arg172.SyncButton.Interactable = true;
+                    arg172.SyncButton.Active = true;
+                    arg172.SyncButton.Visible = true;
+                    arg172.SyncButton.AutoButtonColor = true;
+                end;
+                if arg172.StopButton then
+                    arg172.StopButton.Visible = false;
+                end;
+                if arg172.StopDanceText then
+                    arg172.StopDanceText.Text = arg172.DEFAULT_TEXT;
+                end;
+                return;
+            end);
+            return;
+        end;
+        return tbl6;
+    end;
+end;
+return (function(...)
+    while true do
+        l122 = l222;
+        l222 = l122;
+        fn6();
+    end;
+    return;
+end)();
