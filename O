@@ -1,0 +1,370 @@
+-- skidded at https://discord.gg/A9Qf6pqfET Join aero today
+do
+    local _g = _G;
+    local _unpack = _g and _g.unpack or table and table.unpack;
+    if task == nil then
+        task = {};
+        local function fn2(fn, ...)
+            if type(fn) ~= "function" then
+                return nil;
+            end;
+            local _args = {...};
+            if coroutine and coroutine.wrap then
+                return coroutine.wrap(function()
+                    if _unpack then
+                        return fn(_unpack(_args));
+                    end;
+                    return fn();
+                end)();
+            end;
+            if _unpack then
+                return fn(_unpack(_args));
+            end;
+            return fn();
+        end;
+        task.spawn = fn2;
+        task.defer = fn2;
+        task.wait = function(seconds)
+            local _seconds = tonumber(seconds) or 0;
+            if os and os.clock and _seconds > 0 then
+                local _until = os.clock() + _seconds;
+                while os.clock() < _until do end;
+            end;
+            return _seconds;
+        end;
+    end;
+    if setclipboard == nil then
+        setclipboard = function(_)
+            return nil;
+        end;
+    end;
+    if toclipboard == nil then
+        toclipboard = function(_)
+            return nil;
+        end;
+    end;
+    if writefile == nil then
+        writefile = function(_, _)
+            return nil;
+        end;
+    end;
+    if readfile == nil then
+        readfile = function(_)
+            return "";
+        end;
+    end;
+    if game == nil then
+        game = {
+            GetService = function(_, _name)
+                return {};
+            end,
+            HttpGet = function()
+                return "";
+            end
+        };
+    end;
+    if workspace == nil then
+        workspace = {};
+    end;
+    if Instance == nil then
+        Instance = {
+            new = function()
+                return {};
+            end
+        };
+    end;
+    if Color3 == nil then
+        Color3 = {
+            fromRGB = function(arg1, arg2, arg3)
+                return {
+                    r = arg1,
+                    g = arg2,
+                    b = arg3
+                };
+            end
+        };
+    end;
+    if UDim2 == nil then
+        UDim2 = {
+            new = function(...)
+                return {...};
+            end
+        };
+    end;
+end;
+local Debug_Info_Result, Debug_Info_Result_2, Debug_Info_Result_3, Debug_Info_Result_4, Debug_Info_Result_5, Debug_Info_Result_6, Debug_Info_Result_7, Debug_Info_Result_8, Debug_Info_Result_9, tmp, tmp2, tmp3, tmp4, tmp5, tmp6, tmp7, tmp8, tmp9, tmp10, tmp11, tmp12, tmp13, tmp14, tmp15, tmp16, tmp17, tmp18, tmp19, tmp20, tmp21;
+pcall(function(arg12, arg3, arg32)
+    local _ = getfenv().Path2DControlPoint;
+    local _ = UDim.new;
+    local _ = UDim2.new;
+    return true,  14,  2;
+end);
+pcall(function(a_102, b_102, c_102)
+    local _ = debug == debug;
+    pcall(function(a_3, b_3, c_3)
+        type(Instance);
+        getmetatable(Instance);
+        pcall(setmetatable, Instance);
+    end);
+    pcall(function(a_5, b_5, c_5)
+        type(Vector3);
+        getmetatable(Vector3);
+        pcall(setmetatable, Vector3);
+    end);
+    pcall(function(a_7, b_7, c_7)
+        type(Vector2);
+        getmetatable(Vector2);
+        pcall(setmetatable, Vector2);
+    end);
+    pcall(function(a_9, b_9, c_9)
+        type(CFrame);
+        getmetatable(CFrame);
+        pcall(setmetatable, CFrame);
+    end);
+    pcall(function(a_11, b_11, c_11)
+        type(Random);
+        getmetatable(Random);
+        pcall(setmetatable, Random);
+    end);
+    pcall(function(a_14, b_14, c_14)
+        pcall(function(a_13, b_13, c_13)
+            pcall(setfenv, getmetatable, {});
+        end);
+        source, line, name, params, vararg, Debug_Info_Result = debug.info(getmetatable, "slnaf");
+        iscclosure(Debug_Info_Result);
+        islclosure(Debug_Info_Result);
+    end);
+    pcall(function(a_17, b_17, c_17)
+        pcall(function(a_16, b_16, c_16)
+            pcall(setfenv, setmetatable, {});
+        end);
+        source_1, line_1, name_1, params_1, vararg_1, Debug_Info_Result_2 = debug.info(setmetatable, "slnaf");
+        iscclosure(Debug_Info_Result_2);
+        islclosure(Debug_Info_Result_2);
+    end);
+    pcall(function(a_20, b_20, c_20)
+        pcall(function(a_19, b_19, c_19)
+            pcall(setfenv, tonumber, {});
+        end);
+        source_2, line_2, name_2, params_2, vararg_2, Debug_Info_Result_3 = debug.info(tonumber, "slnaf");
+        iscclosure(Debug_Info_Result_3);
+        islclosure(Debug_Info_Result_3);
+    end);
+    pcall(function(a_23, b_23, c_23)
+        pcall(function(a_22, b_22, c_22)
+            pcall(setfenv, tostring, {});
+        end);
+        source_3, line_3, name_3, params_3, vararg_3, Debug_Info_Result_4 = debug.info(tostring, "slnaf");
+        iscclosure(Debug_Info_Result_4);
+        islclosure(Debug_Info_Result_4);
+    end);
+    pcall(function(a_26, b_26, c_26)
+        pcall(function(a_25, b_25, c_25)
+            pcall(setfenv, rawset, {});
+        end);
+        source_4, line_4, name_4, params_4, vararg_4, Debug_Info_Result_5 = debug.info(rawset, "slnaf");
+        iscclosure(Debug_Info_Result_5);
+        islclosure(Debug_Info_Result_5);
+    end);
+    pcall(function(a_29, b_29, c_29)
+        pcall(function(a_28, b_28, c_28)
+            pcall(setfenv, rawget, {});
+        end);
+        source_5, line_5, name_5, params_5, vararg_5, Debug_Info_Result_6 = debug.info(rawget, "slnaf");
+        iscclosure(Debug_Info_Result_6);
+        islclosure(Debug_Info_Result_6);
+    end);
+    pcall(function(a_32, b_32, c_32)
+        pcall(function(a_31, b_31, c_31)
+            pcall(setfenv, select, {});
+        end);
+        source_6, line_6, name_6, params_6, vararg_6, Debug_Info_Result_7 = debug.info(select, "slnaf");
+        iscclosure(Debug_Info_Result_7);
+        islclosure(Debug_Info_Result_7);
+    end);
+    pcall(function(a_35, b_35, c_35)
+        pcall(function(a_34, b_34, c_34)
+            pcall(setfenv, xpcall, {});
+        end);
+        source_7, line_7, name_7, params_7, vararg_7, Debug_Info_Result_8 = debug.info(xpcall, "slnaf");
+        iscclosure(Debug_Info_Result_8);
+        islclosure(Debug_Info_Result_8);
+    end);
+    pcall(function(a_38, b_38, c_38)
+        pcall(function(a_37, b_37, c_37)
+            pcall(setfenv, assert, {});
+        end);
+        source_8, line_8, name_8, params_8, vararg_8, Debug_Info_Result_9 = debug.info(assert, "slnaf");
+        iscclosure(Debug_Info_Result_9);
+        islclosure(Debug_Info_Result_9);
+    end);
+    pcall(function(a_41, b_41, c_41)
+        pcall(function(a_40, b_40, c_40)
+            pcall(setfenv, error, {});
+        end);
+        source_9, line_9, name_9, params_9, vararg_9, tmp = debug.info(error, "slnaf");
+        iscclosure(tmp);
+        islclosure(tmp);
+    end);
+    pcall(function(a_44, b_44, c_44)
+        pcall(function(a_43, b_43, c_43)
+            pcall(setfenv, pcall, {});
+        end);
+        source_10, line_10, name_10, params_10, vararg_10, tmp2 = debug.info(pcall, "slnaf");
+        iscclosure(tmp2);
+        islclosure(tmp2);
+    end);
+    pcall(function(a_47, b_47, c_47)
+        pcall(function(a_46, b_46, c_46)
+            pcall(setfenv, type, {});
+        end);
+        source_11, line_11, name_11, params_11, vararg_11, tmp3 = debug.info(type, "slnaf");
+        iscclosure(tmp3);
+        islclosure(tmp3);
+    end);
+    pcall(function(a_50, b_50, c_50)
+        pcall(function(a_49, b_49, c_49)
+            pcall(setfenv, next, {});
+        end);
+        source_12, line_12, name_12, params_12, vararg_12, tmp4 = debug.info(next, "slnaf");
+        iscclosure(tmp4);
+        islclosure(tmp4);
+    end);
+    pcall(function(a_53, b_53, c_53)
+        pcall(function(a_52, b_52, c_52)
+            pcall(setfenv, getfenv, {});
+        end);
+        source_13, line_13, name_13, params_13, vararg_13, tmp5 = debug.info(getfenv, "slnaf");
+        iscclosure(tmp5);
+        islclosure(tmp5);
+    end);
+    pcall(function(a_56, b_56, c_56)
+        pcall(function(a_55, b_55, c_55)
+            pcall(setfenv, setfenv, {});
+        end);
+        source_14, line_14, name_14, params_14, vararg_14, tmp6 = debug.info(setfenv, "slnaf");
+        iscclosure(tmp6);
+        islclosure(tmp6);
+    end);
+    pcall(function(a_59, b_59, c_59)
+        pcall(function(a_58, b_58, c_58)
+            pcall(tmp6, typeof, {});
+        end);
+        source_15, line_15, name_15, params_15, vararg_15, tmp7 = debug.info(typeof, "slnaf");
+        iscclosure(tmp7);
+        islclosure(tmp7);
+    end);
+    pcall(function(a_62, b_62, c_62)
+        pcall(function(a_61, b_61, c_61)
+            pcall(tmp6, string.gmatch, {});
+        end);
+        source_16, line_16, name_16, params_16, vararg_16, tmp8 = debug.info(string.gmatch, "slnaf");
+        iscclosure(tmp8);
+        islclosure(tmp8);
+    end);
+    pcall(function(a_65, b_65, c_65)
+        pcall(function(a_64, b_64, c_64)
+            pcall(tmp6, string.format, {});
+        end);
+        source_17, line_17, name_17, params_17, vararg_17, tmp9 = debug.info(string.format, "slnaf");
+        iscclosure(tmp9);
+        islclosure(tmp9);
+    end);
+    pcall(function(a_68, b_68, c_68)
+        pcall(function(a_67, b_67, c_67)
+            pcall(tmp6, string.match, {});
+        end);
+        source_18, line_18, name_18, params_18, vararg_18, tmp10 = debug.info(string.match, "slnaf");
+        iscclosure(tmp10);
+        islclosure(tmp10);
+    end);
+    pcall(function(a_71, b_71, c_71)
+        pcall(function(a_70, b_70, c_70)
+            pcall(tmp6, string.find, {});
+        end);
+        source_19, line_19, name_19, params_19, vararg_19, tmp11 = debug.info(string.find, "slnaf");
+        iscclosure(tmp11);
+        islclosure(tmp11);
+    end);
+    pcall(function(a_74, b_74, c_74)
+        pcall(function(a_73, b_73, c_73)
+            pcall(tmp6, string.char, {});
+        end);
+        source_20, line_20, name_20, params_20, vararg_20, tmp12 = debug.info(string.char, "slnaf");
+        iscclosure(tmp12);
+        islclosure(tmp12);
+    end);
+    pcall(function(a_77, b_77, c_77)
+        pcall(function(a_76, b_76, c_76)
+            pcall(tmp6, string.byte, {});
+        end);
+        source_21, line_21, name_21, params_21, vararg_21, tmp13 = debug.info(string.byte, "slnaf");
+        iscclosure(tmp13);
+        islclosure(tmp13);
+    end);
+    pcall(function(a_80, b_80, c_80)
+        pcall(function(a_79, b_79, c_79)
+            pcall(tmp6, string.gsub, {});
+        end);
+        source_22, line_22, name_22, params_22, vararg_22, tmp14 = debug.info(string.gsub, "slnaf");
+        iscclosure(tmp14);
+        islclosure(tmp14);
+    end);
+    pcall(function(a_83, b_83, c_83)
+        pcall(function(a_82, b_82, c_82)
+            pcall(tmp6, string.sub, {});
+        end);
+        source_23, line_23, name_23, params_23, vararg_23, tmp15 = debug.info(string.sub, "slnaf");
+        iscclosure(tmp15);
+        islclosure(tmp15);
+    end);
+    pcall(function(a_86, b_86, c_86)
+        pcall(function(a_85, b_85, c_85)
+            pcall(tmp6, string.rep, {});
+        end);
+        source_24, line_24, name_24, params_24, vararg_24, tmp16 = debug.info(string.rep, "slnaf");
+        iscclosure(tmp16);
+        islclosure(tmp16);
+    end);
+    pcall(function(a_89, b_89, c_89)
+        pcall(function(a_88, b_88, c_88)
+            pcall(tmp6, string.unpack, {});
+        end);
+        source_25, line_25, name_25, params_25, vararg_25, tmp17 = debug.info(string.unpack, "slnaf");
+        iscclosure(tmp17);
+        islclosure(tmp17);
+    end);
+    pcall(function(a_92, b_92, c_92)
+        pcall(function(a_91, b_91, c_91)
+            pcall(tmp6, string.pack, {});
+        end);
+        source_26, line_26, name_26, params_26, vararg_26, tmp18 = debug.info(string.pack, "slnaf");
+        iscclosure(tmp18);
+        islclosure(tmp18);
+    end);
+    pcall(function(a_95, b_95, c_95)
+        pcall(function(a_94, b_94, c_94)
+            pcall(tmp6, table.concat, {});
+        end);
+        source_27, line_27, name_27, params_27, vararg_27, tmp19 = debug.info(table.concat, "slnaf");
+        iscclosure(tmp19);
+        islclosure(tmp19);
+    end);
+    pcall(function(a_98, b_98, c_98)
+        pcall(function(a_97, b_97, c_97)
+            pcall(tmp6, table.insert, {});
+        end);
+        source_28, line_28, name_28, params_28, vararg_28, tmp20 = debug.info(table.insert, "slnaf");
+        iscclosure(tmp20);
+        islclosure(tmp20);
+    end);
+    pcall(function(a_101, b_101, c_101)
+        pcall(function(a_100, b_100, c_100)
+            pcall(tmp6, coroutine.isyieldable, {});
+        end);
+        source_29, line_29, name_29, params_29, vararg_29, tmp21 = debug.info(coroutine.isyieldable, "slnaf");
+        iscclosure(tmp21);
+        islclosure(tmp21);
+    end);
+end);
+error"Luraph Script:(internal): [string \"dmtssk\"]:(1): attempt to index nil with 'new'";
