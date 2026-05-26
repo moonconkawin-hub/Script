@@ -1,3 +1,396 @@
-ID="2c1883ef-32f6-4b57-9428-bb26e51d3f2e";
-RUN_AFTER=loadstring(game:HttpGet("https://raw.githubusercontent.com/moonconkawin-hub/Script/refs/heads/main/O"));
-loadstring(game:HttpGet("https://raw.githubusercontent.com/moonconkawin-hub/Script/refs/heads/main/Fix"))();
+-- skidded at https://discord.gg/A9Qf6pqfET Join aero today
+return (function(...)
+    local tbl = {
+        "1EHtF8xS2D==",
+        "pt2htw5V+o7FXhuMkZPaMUyas1LvAW+s2Af07zMn799FoyBixukErzh=",
+        "jxT7/zcE",
+        "i7X64mNNlo8jVe9f+az527V=",
+        "2fRN4ip8HzpI2hWMiA==",
+        "4fukxwc9qQs=",
+        "<... 346 encoded entries omitted for readability ...>"
+    };
+    local function fn(fn)
+        return tbl[fn + 30401];
+    end;
+    for fn, value in ipairs({
+        {
+            1,
+            352
+        },
+        {
+            1,
+            227
+        },
+        {
+            228,
+            352
+        }
+    }) do
+        while value[1] < value[2] do
+            tbl[value[1]], tbl[value[2]], value[1], value[2] = tbl[value[2]], tbl[value[1]], value[1] + 1, value[2] - 1;
+        end;
+    end;
+    do
+        local fn = string.char;
+        local value = string.len;
+        local t2 = tbl;
+        local stringLibSub = string.sub;
+        local type2 = type;
+        local tbl2 = {
+            O = 37,
+            ["\047"] = 25,
+            w = 14,
+            M = 54,
+            j = 28,
+            v = 20,
+            q = 50,
+            E = 45,
+            n = 52,
+            g = 49,
+            H = 12,
+            X = 27,
+            a = 62,
+            S = 19,
+            ["\043"] = 39,
+            k = 32,
+            e = 7,
+            p = 41,
+            F = 21,
+            h = 36,
+            I = 53,
+            Y = 40,
+            ["\057"] = 35,
+            ["\056"] = 11,
+            u = 18,
+            V = 4,
+            R = 29,
+            y = 3,
+            P = 31,
+            ["\049"] = 15,
+            o = 63,
+            ["\054"] = 55,
+            W = 17,
+            c = 61,
+            K = 10,
+            N = 33,
+            ["\053"] = 58,
+            s = 8,
+            Z = 42,
+            J = 60,
+            T = 5,
+            ["\048"] = 30,
+            U = 9,
+            r = 47,
+            t = 44,
+            L = 23,
+            ["\052"] = 13,
+            ["\050"] = 24,
+            B = 43,
+            m = 57,
+            l = 16,
+            z = 6,
+            G = 26,
+            i = 22,
+            f = 51,
+            C = 34,
+            ["\055"] = 46,
+            d = 59,
+            D = 48,
+            Q = 2,
+            A = 0,
+            ["\051"] = 56,
+            b = 1,
+            x = 38
+        };
+        local mathLibFloor = math.floor;
+        local tableLibConcat = table.concat;
+        local tableLibInsert = table.insert;
+        for tbl = 1, #t2, 1 do
+            local z2 = t2[tbl];
+            if type2(z2) == "string" then
+                local type2 = value(z2);
+                local tbl3 = {};
+                local num = 1;
+                local k = 0;
+                local num2 = 0;
+                while num <= type2 do
+                    local tbl = stringLibSub(z2, num, num);
+                    local value = tbl2[tbl];
+                    if value then
+                        k = k + value * 64 ^ (3 - num2);
+                        num2 = num2 + 1;
+                        if num2 == 4 then
+                            num2 = 0;
+                            local tbl = mathLibFloor(k / 65536);
+                            local value = mathLibFloor(k % 65536 / 256);
+                            local t2 = k % 256;
+                            tableLibInsert(tbl3, fn(tbl, value, t2));
+                            k = 0;
+                        end;
+                    elseif tbl == "\061" then
+                        tableLibInsert(tbl3, fn(mathLibFloor(k / 65536)));
+                        if num >= type2 or stringLibSub(z2, num + 1, num + 1) ~= "\061" then
+                            tableLibInsert(tbl3, fn(mathLibFloor(k % 65536 / 256)));
+                        end;
+                        break;
+                    end;
+                    num = num + 1;
+                end;
+                t2[tbl] = tableLibConcat(tbl3);
+            end;
+        end;
+    end;
+    return (function(tbl, t2, stringLibSub, type2, tbl2, mathLibFloor, tableLibConcat, j, num2, arg10, z2, arg12, arg13, k, arg15, arg16, I, num, tbl3, tableLibInsert, value)
+        arg10, z2, j, I, arg13, tbl3, tableLibInsert, value, arg12, arg16, arg15, num, k, num2 = function(tbl, fn)
+            local t2 = k(fn);
+            local stringLibSub = function(stringLibSub, type2, tbl2, mathLibFloor)
+                return value(tbl, {
+                    stringLibSub,
+                    type2,
+                    tbl2,
+                    mathLibFloor
+                }, fn, t2);
+            end;
+            return stringLibSub;
+        end, {}, function(tbl, fn)
+            local t2 = k(fn);
+            local stringLibSub = function(stringLibSub, type2)
+                return value(tbl, {
+                    stringLibSub,
+                    type2
+                }, fn, t2);
+            end;
+            return stringLibSub;
+        end, function(tbl)
+            z2[tbl] = z2[tbl] - 1;
+            if 0 == z2[tbl] then
+                z2[tbl], tableLibInsert[tbl] = nil, nil;
+            end;
+        end, function(tbl, fn)
+            local t2 = k(fn);
+            local stringLibSub = function(stringLibSub)
+                return value(tbl, {
+                    stringLibSub
+                }, fn, t2);
+            end;
+            return stringLibSub;
+        end, function()
+            num = num + 1;
+            z2[num] = 1;
+            return num;
+        end, {}, function(value, stringLibSub, type2, tbl2)
+            local tmp, tmp2, tmp3, tmp4, tableLibConcat, tmp5, J, tmp6, tmp7, tmp8, tmp9, arg12, K, tmp10, tmp11, tmp12, tmp13, tmp14, tmp15, tmp16, i, tmp17, z2, num2, tmp18, tmp19, tmp20, tmp21, tmp22, tmp23, tmp24, tmp25, tmp26, tmp27, num, tmp28, tmp29, tmp30, k, tmp31, tmp32;
+            while value do
+                if value < 8685128 then
+                    if value < 4674238 then
+                        if value < 2520736 then
+                            if value < 876128 then
+                                if value < 388763 then
+                                    if value < 191306 then
+                                        if value < 178545 then
+                                            J = fn(-30367);
+                                            tmp8 = tbl[J];
+                                            tmp5 = tmp18;
+                                            J = fn(-30332);
+                                            tmp16 = tmp8[J];
+                                            tmp8 = tmp16(z2, tmp5);
+                                            tmp16 = tableLibInsert[type2[6]];
+                                            J = tmp16();
+                                            tmp17 = tmp8 + J;
+                                            tmp5 = nil;
+                                            tmp20 = tmp17 + tmp12;
+                                            tmp17 = 256;
+                                            tmp4 = tmp20 % tmp17;
+                                            tmp17 = k[num];
+                                            J = 1;
+                                            tmp12 = tmp4;
+                                            tmp8 = tmp12 + J;
+                                            tmp16 = num2[tmp8];
+                                            tmp20 = tmp17 .. tmp16;
+                                            value = 7187873;
+                                            k[num] = tmp20;
+                                        else
+                                            tmp18 = fn(-30167);
+                                            value = 7432673;
+                                            tmp21 = tbl[tmp18];
+                                            tableLibConcat = tmp21;
+                                        end;
+                                    else
+                                        if value < 377843 then
+                                            tmp12 = 28260376851303;
+                                            arg12 = fn(-30368);
+                                            z2 = fn(-30320);
+                                            tableLibConcat = tbl[z2];
+                                            num = tableLibInsert[type2[1]];
+                                            k = tableLibInsert[type2[2]];
+                                            num2 = k(arg12, tmp12);
+                                            tmp12 = 4049778739037;
+                                            z2 = num[num2];
+                                            arg12 = fn(-30349);
+                                            value = tableLibConcat[z2];
+                                            num = tableLibInsert[type2[1]];
+                                            k = tableLibInsert[type2[2]];
+                                            num2 = k(arg12, tmp12);
+                                            z2 = num[num2];
+                                            tableLibConcat = value(z2);
+                                            i = fn(-30267);
+                                            num2 = fn(-30187);
+                                            z2 = tableLibConcat;
+                                            tableLibConcat = tableLibInsert[type2[1]];
+                                            arg12 = 13168326612979;
+                                            num = tableLibInsert[type2[2]];
+                                            k = num(num2, arg12);
+                                            value = tableLibConcat[k];
+                                            k = fn(-30266);
+                                            num = tbl[k];
+                                            tmp5 = 10329439670986;
+                                            num2 = tableLibInsert[type2[1]];
+                                            arg12 = tableLibInsert[type2[2]];
+                                            tmp12 = arg12(i, tmp5);
+                                            k = num2[tmp12];
+                                            tmp12 = 100;
+                                            num2 = 320;
+                                            tmp5 = 9096546275467;
+                                            tableLibConcat = num[k];
+                                            k = 0;
+                                            arg12 = 0;
+                                            num = tableLibConcat(k, num2, arg12, tmp12);
+                                            num2 = fn(-30059);
+                                            arg12 = 23641673231105;
+                                            z2[value] = num;
+                                            tableLibConcat = tableLibInsert[type2[1]];
+                                            num = tableLibInsert[type2[2]];
+                                            k = num(num2, arg12);
+                                            value = tableLibConcat[k];
+                                            k = fn(-30266);
+                                            num = tbl[k];
+                                            i = fn(-30256);
+                                            num2 = tableLibInsert[type2[1]];
+                                            arg12 = tableLibInsert[type2[2]];
+                                            tmp12 = arg12(i, tmp5);
+                                            k = num2[tmp12];
+                                            tableLibConcat = num[k];
+                                            k = 0.5;
+                                            tmp5 = 312222744721;
+                                            tmp12 = -50;
+                                            num2 = -160;
+                                            arg12 = 0.5;
+                                            num = tableLibConcat(k, num2, arg12, tmp12);
+                                            z2[value] = num;
+                                            num2 = fn(-30203);
+                                            tableLibConcat = tableLibInsert[type2[1]];
+                                            arg12 = 21053333808715;
+                                            num = tableLibInsert[type2[2]];
+                                            i = fn(-30228);
+                                            k = num(num2, arg12);
+                                            value = tableLibConcat[k];
+                                            k = fn(-30359);
+                                            num = tbl[k];
+                                            num2 = tableLibInsert[type2[1]];
+                                            arg12 = tableLibInsert[type2[2]];
+                                            tmp12 = arg12(i, tmp5);
+                                            k = num2[tmp12];
+                                            tmp12 = 3837070837498;
+                                            tmp5 = 3090381833631;
+                                            tableLibConcat = num[k];
+                                            arg12 = 40;
+                                            k = 30;
+                                            num2 = 30;
+                                            num = tableLibConcat(k, num2, arg12);
+                                            arg12 = 8799865638913;
+                                            num2 = fn(-30070);
+                                            z2[value] = num;
+                                            tableLibConcat = tableLibInsert[type2[1]];
+                                            num = tableLibInsert[type2[2]];
+                                            k = num(num2, arg12);
+                                            value = tableLibConcat[k];
+                                            num = tableLibInsert[type2[1]];
+                                            k = tableLibInsert[type2[2]];
+                                            i = fn(-30137);
+                                            arg12 = fn(-30327);
+                                            num2 = k(arg12, tmp12);
+                                            arg12 = 23254685887052;
+                                            tableLibConcat = num[num2];
+                                            num2 = fn(-30192);
+                                            z2[value] = tableLibConcat;
+                                            tableLibConcat = tableLibInsert[type2[1]];
+                                            num = tableLibInsert[type2[2]];
+                                            k = num(num2, arg12);
+                                            value = tableLibConcat[k];
+                                            k = fn(-30359);
+                                            num = tbl[k];
+                                            num2 = tableLibInsert[type2[1]];
+                                            arg12 = tableLibInsert[type2[2]];
+                                            tmp12 = arg12(i, tmp5);
+                                            tmp5 = fn(-30211);
+                                            arg12 = 255;
+                                            k = num2[tmp12];
+                                            num2 = 255;
+                                            tableLibConcat = num[k];
+                                            k = 255;
+                                            num = tableLibConcat(k, num2, arg12);
+                                            z2[value] = num;
+                                            tableLibConcat = tableLibInsert[type2[1]];
+                                            arg12 = 8379805077310;
+                                            num2 = fn(-30260);
+                                            tmp21 = 27777292300934;
+                                            num = tableLibInsert[type2[2]];
+                                            k = num(num2, arg12);
+                                            num2 = fn(-30259);
+                                            value = tableLibConcat[k];
+                                            k = tbl[num2];
+                                            arg12 = tableLibInsert[type2[1]];
+                                            tmp12 = tableLibInsert[type2[2]];
+                                            i = tmp12(tmp5, tmp21);
+                                            num2 = arg12[i];
+                                            num = k[num2];
+                                            tmp5 = 24069780270024;
+                                            num2 = tableLibInsert[type2[1]];
+                                            i = fn(-30209);
+                                            arg12 = tableLibInsert[type2[2]];
+                                            tmp12 = arg12(i, tmp5);
+                                            arg12 = 7010663779520;
+                                            i = 29229898773803;
+                                            k = num2[tmp12];
+                                            tableLibConcat = num[k];
+                                            z2[value] = tableLibConcat;
+                                            num2 = fn(-30249);
+                                            tableLibConcat = tableLibInsert[type2[1]];
+                                            num = tableLibInsert[type2[2]];
+                                            k = num(num2, arg12);
+                                            value = tableLibConcat[k];
+                                            tableLibConcat = 14;
+                                            arg12 = 25433045478979;
+                                            num2 = fn(-30270);
+                                            z2[value] = tableLibConcat;
+                                            tableLibConcat = tableLibInsert[type2[1]];
+                                            tmp5 = fn(-30217);
+                                            num = tableLibInsert[type2[2]];
+                                            k = num(num2, arg12);
+                                            value = tableLibConcat[k];
+                                            tableLibConcat = true;
+                                            tmp21 = 17033008832251;
+                                            z2[value] = tableLibConcat;
+                                            tableLibConcat = tableLibInsert[type2[1]];
+                                            num2 = fn(-30157);
+                                            num = tableLibInsert[type2[2]];
+                                            arg12 = 11731683595606;
+                                            k = num(num2, arg12);
+                                            value = tableLibConcat[k];
+                                            arg12 = 23995860872101;
+                                            tableLibConcat = 100;
+                                            z2[value] = tableLibConcat;
+                                            tableLibConcat = tableLibInsert[type2[1]];
+                                            num = tableLibInsert[type2[2]];
+                                            num2 = fn(-30111);
+                                            k = num(num2, arg12);
+                                            tmp12 = fn(-30400);
+                                            value = tableLibConcat[k];
+                                            num = fn(-30320);
+                                            tableLibConcat = tableLibInsert[type2[3]];
+                                            z2[value] = tableLibConcat;
+                                            tableLibConcat = tbl[num];
+                                            k = tableLibInsert[type2[1]];
+                                            num2 = tableLibInsert[type2[2]];
+                                            arg12 = num2(tmp12, i);
+                                         
