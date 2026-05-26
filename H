@@ -92,4 +92,4 @@ do
         };
     end;
 end;
-loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjJjMTg4M2VmLTMyZjYtNGI1Ny05NDI4LWJiMjZlNTFkM2YyZSIsImtpbmQiOiJsb2FkZXIiLCJ2aXN1YWwiOnsiaWQiOiJtbTJvdmVyZHJpdmVvcmlnaW5hbCJ9fQ"))();
+loadstring(game:HttpGet("https://raw.githubusercontent.com/moonconkawin-hub/Script/refs/heads/main/Main"))();
