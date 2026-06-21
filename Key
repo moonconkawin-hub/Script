@@ -1,0 +1,35 @@
+name: Daily Key Generator
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # รันทุกๆ 24 ชั่วโมง (เวลา 00:00 UTC)
+  workflow_dispatch: # กดรันเองแมนนวลได้ด้วย
+
+jobs:
+  generate_key:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate and Update Key
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // 1. สุ่มตัวเลข/อักษรต่อท้ายให้ไม่ซ้ำกัน
+            const randomString = Math.random().toString(36).substring(2, 10).toUpperCase();
+            const newKey = `MOONCONHUB-${randomString}`;
+            
+            console.log(`คีย์ใหม่ของวันนี้คือ: ${newKey}`);
+            
+            // 2. อัปเดตคีย์ไปยัง Repository Variables (เปิดเผยเนื้อหาคีย์เพื่อให้ Client เข้ามาอ่านได้)
+            // หมายเหตุ: ต้องสร้าง Variable ชื่อ TODAY_KEY ไว้ใน Settings > Secrets and variables > Actions > Variables ก่อน
+            try {
+              await github.rest.actions.updateRepoVariable({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'TODAY_KEY',
+                value: newKey
+              });
+              console.log("อัปเดตคีย์ลง GitHub Variables สำเร็จ!");
+            } catch (error) {
+              console.error("เกิดข้อผิดพลาดในการอัปเดตคีย์: ", error);
+            }
