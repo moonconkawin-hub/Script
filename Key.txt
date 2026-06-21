@@ -1,103 +1,36 @@
-name: MOONCONHUB Key System
+name: Generate Daily Key
 
 on:
-  # 1. ระบบสุ่มคีย์ใหม่ทุกๆ 24 ชั่วโมง
   schedule:
     - cron: '0 0 * * *'
-  workflow_dispatch: # กดรันสร้างคีย์เองแบบแมนนวลได้
+  workflow_dispatch:
 
-  # 2. ระบบตรวจคีย์เมื่อมีคนเอาคีย์มาส่งผ่านหน้า Issues
-  issues:
-    types: [opened]
+permissions:
+  contents: write
 
 jobs:
-  # --- ส่วนที่ 1: รันสุ่มคีย์ใหม่ทุกวัน ---
-  generate_daily_key:
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+  update-key:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
 
-      - name: Generate Key
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create and Write Key
         run: |
-          # สุ่มอักษร 8 หลักต่อท้ายชื่อคีย์เริ่มต้น
-          RANDOM_STR=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 8 | tr '[:lower:]' '[:upper:]')
+          RANDOM_STR=$(tr -dc 'A-Z0-9' < /dev/urandom | head -c 8)
           NEW_KEY="MOONCONHUB-${RANDOM_STR}"
-          echo "คีย์ประจำวันนี้คือ: $NEW_KEY"
-          
-          # บันทึกลงไฟล์คีย์หลัก และเคลียร์ไฟล์ประวัติของเมื่อวานทิ้งเพื่อเริ่มวันใหม่
-          echo "$NEW_KEY" > current_key.txt
-          echo "" > used_keys.txt
 
-      - name: Commit & Push New Key
+          echo "คีย์วันนี้คือ: $NEW_KEY"
+          echo -n "$NEW_KEY" > Key
+
+      - name: Push to GitHub
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add current_key.txt used_keys.txt
-          git commit -m "🔑 [System] Generated daily key and cleared usage history" || echo "No changes"
-          git push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-  # --- ส่วนที่ 2: รันตรวจสอบคีย์เมื่อมีคนส่งเข้ามา ---
-  verify_submitted_key:
-    if: github.event_name == 'issues'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Verify Key Process
-        id: verify
-        run: |
-          # ดึงค่าคีย์ที่ผู้เล่นกรอกมาจากชื่อเรื่องของ Issue (Title)
-          USER_KEY="${{ github.event.issue.title }}"
-          USER_KEY=$(echo "$USER_KEY" | xargs) # ตัดช่องว่างออก
-          
-          # อ่านคีย์ที่ถูกต้องของวันนี้จากไฟล์
-          CORRECT_KEY=$(cat current_key.txt | xargs)
-          
-          echo "ผู้เล่นส่งคีย์: $USER_KEY"
-          echo "คีย์ที่ถูกต้อง: $CORRECT_KEY"
-          
-          # 1. ตรวจสอบว่าคีย์ตรงกับวันปัจจุบันไหม
-          if [ "$USER_KEY" != "$CORRECT_KEY" ]; then
-             echo "STATUS=INVALID" >> $GITHUB_ENV
-             exit 0
-          fi
-          
-          # 2. ตรวจสอบในไฟล์ประวัติว่ามีคนเคยเคลมคีย์นี้ไปหรือยัง
-          if grep -q -x "$USER_KEY" used_keys.txt; then
-             echo "STATUS=DUPLICATE" >> $GITHUB_ENV
-             exit 0
-          fi
-          
-          # 3. ถ้าคีย์ถูกและไม่ซ้ำ -> บันทึกคีย์นี้ลงไฟล์ทันทีเพื่อบล็อกคนถัดไป
-          echo "$USER_KEY" >> used_keys.txt
-          echo "STATUS=SUCCESS" >> $GITHUB_ENV
-
-      - name: Respond to User and Close Issue
-        if: always()
-        run: |
-          # บอททำการพิมพ์ตอบกลับใน Issue ตามผลลัพธ์
-          if [ "${{ env.STATUS }}" = "SUCCESS" ]; then
-            COMMENT="✅ **เปิดใช้งานสำเร็จ!** คีย์นี้ได้รับการเปิดสิทธิ์ให้แก่คุณ @${{ github.event.issue.user.login }} เรียบร้อยแล้ว (คีย์นี้ถูกล็อกแล้ว คนอื่นจะไม่สามารถใช้ซ้ำได้อีก)"
-          elif [ "${{ env.STATUS }}" = "DUPLICATE" ]; then
-            COMMENT="❌ **ไม่สำเร็จ:** คีย์นี้ถูกบุคคลอื่นนำไปใช้แล้ว! กรุณารอระบบสุ่มคีย์ใหม่ในวันถัดไป หรือหาคีย์ที่ยังไม่มีใครใช้"
-          else
-            COMMENT="❌ **ไม่สำเร็จ:** คีย์ไม่ถูกต้อง หรือหมดอายุแล้ว (คีย์เปลี่ยนใหม่ทุกๆ 24 ชั่วโมง)"
-          fi
-          
-          # ส่งคอมเมนต์และปิด Issue อัตโนมัติเพื่อความเป็นระเบียบ
-          gh issue comment ${{ github.event.issue.number }} --body "$COMMENT"
-          gh issue close ${{ github.event.issue.number }} --reason "completed"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Commit & Push Updated History
-        if: env.STATUS == 'SUCCESS'
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add used_keys.txt
-          git commit -m "🔒 [Key Locked] Key has been claimed by @${{ github.event.issue.user.login }}"
+          git add Key
+          git commit -m "Auto update daily key" || echo "No changes to commit"
           git push
