@@ -4,7 +4,7 @@ import time
 import requests
 
 # 🚨 ตั้งค่าข้อมูล GitHub ของคุณตรงนี้
-GITHUB_TOKEN = "ใส่_GitHub_Personal_Access_Token_ของคุณที่นี่"
+GITHUB_TOKEN = "https://raw.githubusercontent.com/moonconkawin-hub/Script/refs/heads/main/U"
 REPO_OWNER = "moonconkawin-hub"
 REPO_NAME = "Script"
 FILE_PATH = "KeyData.json"
