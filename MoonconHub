@@ -1,7 +1,22 @@
 -- Make by MoonconHub|
 -- https://discord.gg/vXfPuEKUCX
+--
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
+
+--
+WindUI:Notify({
+    Title = "Loading Status",
+    Content = "Script is currently loading, please wait...",
+    Duration = 5,
+    Type = "Information"
+})
+
+--
+task.wait(5)
+
+--
 loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/f20e0668fde501d1176967dc51b33aaa72e848e476fa781047e3dad5a51ae8ca/download"))()
--- ui and key make by jnkie.com |•
+
 -- [[
 --  __  __   ____    ____   _  _   ___   _  _        _  _ 
 -- |  \/  | / __ \  / __ \ | \| | / _ \ | \| |      \ \/ /
