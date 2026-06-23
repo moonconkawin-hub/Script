@@ -1,0 +1,11 @@
+-- 1. Send a notification that the script is loading
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "WindUI Loader";
+    Text = "Loading script, please wait..."; -- Text here
+    Duration = 5; -- The notification will stay for 5 seconds
+})
+
+-- 2. Run your main script
+pcall(function()
+    loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
+end)
